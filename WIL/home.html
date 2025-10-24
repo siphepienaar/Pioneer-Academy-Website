@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pioneer Academy ICT Portal - Login</title>
+  <style>
+    /* ======== BASE STYLES ======== */
+    :root {
+      --primary: #007bff;
+      --primary-dark: #004a9f;
+      --bg: #eaf3ff;
+      --white: #ffffff;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ======== LOGIN CARD ======== */
+    .login-card {
+      background: var(--white);
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .login-card h1 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    .login-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .login-card input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .login-card button {
+      background: var(--primary);
+      color: white;
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .login-card button:hover {
+      background: var(--primary-dark);
+    }
+
+    .error-msg {
+      color: red;
+      font-size: 0.9rem;
+      display: none;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+    }
+
+    @media (max-width: 500px) {
+      .login-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-card">
+    <h1>Pioneer Academy ICT Portal</h1>
+    <p>Authorized Access Only</p>
+
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <p class="error-msg" id="error">Invalid credentials, please try again.</p>
+
+    <button onclick="login()">Login</button>
+  </div>
+
+  <footer>© 2025 Pioneer Academy ICT Department</footer>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const error = document.getElementById("error");
+
+      // Simple static credentials (you can change these)
+      if (user === "admin" && pass === "ictportal") {
+        localStorage.setItem("main_login", "true");
+        window.location.href = "index.html";
+      } else {
+        error.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
